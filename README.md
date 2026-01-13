@@ -1,0 +1,332 @@
+<!DOCTYPE html>
+<html lang="id">
+<head>
+  <meta charset="UTF-8" />
+  <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+  <title>Warung Moro Seneng</title>
+
+  <!-- Google Font -->
+  <link href="https://fonts.googleapis.com/css2?family=Poppins:wght@300;400;600;700&display=swap" rel="stylesheet">
+
+  <!-- AOS Animation -->
+  <link href="https://unpkg.com/aos@2.3.1/dist/aos.css" rel="stylesheet">
+
+  <style>
+    :root {
+      --maroon: #7a1c1c;
+      --orange: #d97706;
+      --light: #fff7ed;
+      --dark: #1f2937;
+    }
+
+    * {
+      margin: 0;
+      padding: 0;
+      box-sizing: border-box;
+      font-family: 'Poppins', sans-serif;
+    }
+
+    body {
+      background: var(--light);
+      color: var(--dark);
+    }
+
+    header {
+      background: linear-gradient(145deg, var(--maroon), var(--orange));
+      color: white;
+      padding: 80px 20px;
+      text-align: center;
+    }
+
+    header h1 {
+      font-size: 3rem;
+      animation: fadeDown 1.2s ease;
+    }
+
+    header p {
+      margin-top: 10px;
+      font-size: 1.1rem;
+      opacity: 0.9;
+    }
+
+    @keyframes fadeDown {
+      from { opacity: 0; transform: translateY(-30px); }
+      to { opacity: 1; transform: translateY(0); }
+    }
+
+    section {
+      padding: 60px 20px;
+      max-width: 1100px;
+      margin: auto;
+    }
+
+    .section-title {
+      text-align: center;
+      font-size: 2.2rem;
+      color: var(--maroon);
+      margin-bottom: 40px;
+    }
+
+    .menu-grid {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px, 1fr));
+      gap: 25px;
+    }
+
+    .menu-card {
+      background: white;
+      border-radius: 16px;
+      overflow: hidden;
+      box-shadow: 0 10px 25px rgba(0,0,0,0.08);
+      transition: transform .4s ease, box-shadow .4s ease;
+    }
+
+    .menu-card:hover {
+      transform: translateY(-8px) scale(1.02);
+      box-shadow: 0 18px 40px rgba(0,0,0,0.15);
+    }
+
+    .menu-card img {
+      width: 100%;
+      height: 180px;
+      object-fit: cover;
+      transition: transform .5s ease;
+    }
+
+    .menu-card:hover img {
+      transform: scale(1.1);
+    }
+
+    .menu-info {
+      padding: 20px;
+    }
+
+    .menu-info h3 {
+      color: var(--maroon);
+      margin-bottom: 6px;
+    }
+
+    .price {
+      color: var(--orange);
+      font-weight: 600;
+    }
+
+    .info-box {
+      display: grid;
+      grid-template-columns: repeat(auto-fit, minmax(250px,1fr));
+      gap: 30px;
+      text-align: center;
+    }
+
+    .info {
+      background: white;
+      padding: 25px;
+      border-radius: 14px;
+      box-shadow: 0 8px 20px rgba(0,0,0,.08);
+    }
+
+    iframe {
+      width: 100%;
+      height: 300px;
+      border-radius: 16px;
+      border: none;
+    }
+
+    .wa-btn {
+      position: fixed;
+      bottom: 25px;
+      right: 25px;
+      background: #25D366;
+      color: white;
+      padding: 15px 22px;
+      border-radius: 50px;
+      text-decoration: none;
+      font-weight: 600;
+      box-shadow: 0 10px 25px rgba(0,0,0,.25);
+      animation: pulse 2s infinite;
+    }
+
+    @keyframes pulse {
+      0% { transform: scale(1); }
+      50% { transform: scale(1.07); }
+      100% { transform: scale(1); }
+    }
+
+    footer {
+      background: var(--maroon);
+      color: white;
+      text-align: center;
+      padding: 20px;
+      margin-top: 50px;
+    }
+  
+    /* Popup Image */
+    .lightbox {
+      position: fixed;
+      top: 0;
+      left: 0;
+      width: 100%;
+      height: 100%;
+      background: rgba(0,0,0,0.8);
+      display: none;
+      align-items: center;
+      justify-content: center;
+      z-index: 9999;
+      animation: fadeIn .3s ease;
+    }
+
+    .lightbox img {
+      max-width: 90%;
+      max-height: 85%;
+      border-radius: 16px;
+      box-shadow: 0 20px 50px rgba(0,0,0,.5);
+      animation: zoomIn .3s ease;
+    }
+
+    @keyframes fadeIn {
+      from { opacity: 0; }
+      to { opacity: 1; }
+    }
+
+    @keyframes zoomIn {
+      from { transform: scale(0.8); }
+      to { transform: scale(1); }
+    }
+  </style>
+</head>
+<body>
+
+<header>
+  <h1>WARUNG MORO SENENG</h1>
+  <p>Jl. Mallengkeri Raya No.116 • Buka - Tutup 10:00 - 22:00 WITA</p>
+</header>
+
+<section>
+  <h2 class="section-title">Daftar Menu</h2>
+  <div class="menu-grid">
+
+    <div class="menu-card" data-aos="fade-up">
+      <img src="Nasi Goreng Merah.png" alt="Nasi Goreng Merah" onclick="openLightbox(this.src)">
+      <div class="menu-info">
+        <h3>Nasi Goreng Merah</h3>
+        <p>• Biasa</p>
+        <p class="price">Rp14.000</p>
+        <p>• Spesial (Hati Ayam + Sayur)</p>
+        <p class="price">Rp19.000</p>
+      </div>
+    </div>
+
+    <div class="menu-card" data-aos="fade-up" data-aos-delay="100">
+      <img src="Nasi Goreng Kecap.png" alt="Nasi Goreng Kecap" onclick="openLightbox(this.src)">
+      <div class="menu-info">
+        <h3>Nasi Goreng Kecap</h3>
+        <p>• Biasa</p>
+        <p class="price">Rp14.000</p>
+        <p>• Spesial (Hati Ayam + Sayur)</p>
+        <p class="price">Rp19.000</p>
+      </div>
+    </div>
+
+    <div class="menu-card" data-aos="fade-up" data-aos-delay="200">
+      <img src="Nasi Campur.png" alt="Nasi Campur" onclick="openLightbox(this.src)">
+      <div class="menu-info">
+        <h3>Nasi Campur</h3>
+        <p>• Telur</p>
+        <p class="price">Rp10.000</p>
+        <p>• Ayam</p>
+        <p class="price">Rp15.000</p>
+        <p>• Komplit</p>
+        <p class="price">Rp17.000</p>
+      </div>
+    </div>
+
+    <div class="menu-card" data-aos="fade-up" data-aos-delay="300">
+      <img src="MIE GORENG DAN KUAH.png" alt="Mie" onclick="openLightbox(this.src)">
+      <div class="menu-info">
+        <h3>Mie Goreng / Kuah</h3>
+        <p>• Biasa</p>
+        <p class="price">Rp14.000</p>
+        <p>• Spesial (Telur + Ayam)</p>
+        <p class="price">Rp17.000</p>
+      </div>
+    </div>
+
+    <div class="menu-card" data-aos="fade-up" data-aos-delay="400">
+      <img src="capcay-sayur-sosis-foto-resep-utama.png" alt="Capcay" onclick="openLightbox(this.src)">
+      <div class="menu-info">
+        <h3>Capcay</h3>
+        <p class="price">Rp17.000</p>
+      </div>
+    </div>
+
+    <div class="menu-card" data-aos="fade-up" data-aos-delay="500">
+      <img src="minuman.png" alt="Minuman" onclick="openLightbox(this.src)">
+      <div class="menu-info">
+        <h3>Minuman</h3>
+        <p>Kopi Hitam</p>
+        <p class="price">Rp3.000</p>
+        <p>Luwak White Kopi (Panas)</p>
+        <p class="price">Rp3.000</p>
+        <p>Luwak White Kopi (Es)</p>
+        <p class="price">Rp4.000</p>
+        <p>Es Teh</p>
+        <p class="price">Rp3.000</p>
+      </div>
+    </div>
+
+  </div>
+</section>
+
+<section>
+  <h2 class="section-title">Informasi</h2>
+  <div class="info-box">
+    <div class="info" data-aos="zoom-in">
+      <h3>Alamat</h3>
+      <p>Jl. Mallengkeri Raya No. 116</p>
+    </div>
+    <div class="info" data-aos="zoom-in" data-aos-delay="150">
+      <h3>Jam Buka - Tutup</h3>
+      <p>10:00 - 22:00 WITA</p>
+    </div>
+  </div>
+</section>
+
+<section>
+  <h2 class="section-title">Lokasi Kami</h2>
+  <iframe src="https://www.google.com/maps?q=Jl.%20Mallengkeri%20Raya%20116&output=embed"></iframe>
+</section>
+
+<a class="wa-btn" href="https://wa.me/6289508418959" target="_blank">💬 Pesan WhatsApp</a>
+
+<footer>
+  <p>© 2026 Moro Seneng • Warung Makan</p>
+</footer>
+
+<script src="https://unpkg.com/aos@2.3.1/dist/aos.js"></script>
+<script>
+  AOS.init({
+    duration: 900,
+    once: true
+  });
+</script>
+
+
+<div class="lightbox" id="lightbox" onclick="closeLightbox()">
+  <img id="lightbox-img" src="" alt="Preview">
+</div>
+
+<script>
+  function openLightbox(src) {
+    const lightbox = document.getElementById('lightbox');
+    const img = document.getElementById('lightbox-img');
+    img.src = src;
+    lightbox.style.display = 'flex';
+  }
+
+  function closeLightbox() {
+    document.getElementById('lightbox').style.display = 'none';
+  }
+</script>
+
+</body>
+</html>
